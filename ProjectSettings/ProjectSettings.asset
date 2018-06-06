@@ -564,11 +564,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: HoloBallRoller
   metroPackageVersion: 1.0.0.0
-  metroCertificatePath: 
+  metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: rafek
+  metroCertificateIssuer: rafek
+  metroCertificateNotAfter: 000cc956771cd501
   metroApplicationDescription: HoloBallRoller2
   wsaImages: {}
   metroTileShortName: 
