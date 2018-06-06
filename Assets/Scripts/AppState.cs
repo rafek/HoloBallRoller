@@ -55,7 +55,7 @@ public class AppState : MonoBehaviour, IInputClickHandler
     {
         InputManager.Instance.AddGlobalListener(gameObject);
 
-        string uri = "file:///" + Application.dataPath + "/AssetBundles/targetbundle.hd";
+        string uri = "https://holoballroller.blob.core.windows.net/assetscontainer/targetbundle.hd";
 
         var request = UnityWebRequest.GetAssetBundle(uri, 0);
 
