@@ -1,14 +1,16 @@
 ﻿using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity.SpatialMapping;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class AppState : MonoBehaviour, IInputClickHandler
 {
     public GameObject PlayerPrefab;
-    public GameObject TargetPrefab;
     public int TargetCount;
     public Material OcclusionMaterial;
 
+    private GameObject _targetPrefab;
     private bool _targetsPlaced = false;
     private bool _playerPlaced = false;
 
@@ -20,7 +22,7 @@ public class AppState : MonoBehaviour, IInputClickHandler
         {
             if (Utils.IsFloorPointed(out focusPoint))
             {
-                Instantiate(TargetPrefab, focusPoint, Quaternion.identity);
+                Instantiate(_targetPrefab, focusPoint, Quaternion.identity);
 
                 TargetCount = TargetCount - 1;
             }
@@ -49,8 +51,18 @@ public class AppState : MonoBehaviour, IInputClickHandler
         eventData.Use();
     }
 
-    private void Start()
+    IEnumerator Start()
     {
         InputManager.Instance.AddGlobalListener(gameObject);
+
+        string uri = "file:///" + Application.dataPath + "/AssetBundles/targetbundle.hd";
+
+        var request = UnityWebRequest.GetAssetBundle(uri, 0);
+
+        yield return request.Send();
+
+        var bundle = DownloadHandlerAssetBundle.GetContent(request);
+
+        _targetPrefab = bundle.LoadAsset<GameObject>("Target");
     }
 }

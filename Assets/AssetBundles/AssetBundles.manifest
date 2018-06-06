@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 2743685401
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: targetbundle.hd
+      Dependencies: {}
