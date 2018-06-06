@@ -1,4 +1,5 @@
 ﻿using HoloToolkit.Unity.InputModule;
+using HoloToolkit.Unity.SpatialMapping;
 using UnityEngine;
 
 public class AppState : MonoBehaviour, IInputClickHandler
@@ -6,6 +7,7 @@ public class AppState : MonoBehaviour, IInputClickHandler
     public GameObject PlayerPrefab;
     public GameObject TargetPrefab;
     public int TargetCount;
+    public Material OcclusionMaterial;
 
     private bool _targetsPlaced = false;
     private bool _playerPlaced = false;
@@ -24,6 +26,11 @@ public class AppState : MonoBehaviour, IInputClickHandler
             }
 
             _targetsPlaced = TargetCount == 0;
+
+            if (_targetsPlaced)
+            {
+                SurfaceMeshesToPlanes.Instance.MakePlanes();
+            }
         }
         else if (!_playerPlaced)
         {
@@ -32,6 +39,8 @@ public class AppState : MonoBehaviour, IInputClickHandler
                 Instantiate(PlayerPrefab, focusPoint + Vector3.up * .3f, Quaternion.identity);
 
                 _playerPlaced = true;
+
+                SpatialMappingManager.Instance.SetSurfaceMaterial(OcclusionMaterial);
 
                 InputManager.Instance.RemoveGlobalListener(gameObject);
             }

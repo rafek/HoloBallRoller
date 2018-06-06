@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 407646987}
   - component: {fileID: 407646988}
+  - component: {fileID: 407646989}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -162,6 +163,24 @@ MonoBehaviour:
   TargetPrefab: {fileID: 1355396830874032, guid: b26f74e1b1ef3904a9ff2bc882553017,
     type: 2}
   TargetCount: 4
+  OcclusionMaterial: {fileID: 2100000, guid: df172103f5fba4a4d8636aeca60cb0d7, type: 2}
+--- !u!114 &407646989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 407646986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbc42345d6a90543ab66003022593fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActivePlanes: []
+  SurfacePlanePrefab: {fileID: 1000010593991404, guid: e2f0116ed6ef0d44bb7791f327bea328,
+    type: 2}
+  MinArea: 0.025
+  drawPlanesMask: 2
+  destroyPlanesMask: 16
 --- !u!1001 &524943709
 Prefab:
   m_ObjectHideFlags: 0
